@@ -5,31 +5,30 @@
 name: Publish Docker image
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
-jobs: 
-    build: 
-        runs-on: ubuntu-latest
-    
-        steps:
-            - name: Checkout repo
-                uses: actions/checkout@v4
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-            # Login to Docker hub med dockers script
-            - name: Login to DockerHub
-                uses: docker/login-action@v3
-                with: 
-                    username: ${{secrets.DOCKERHUB_USERNAME}}
-                    password: ${{secrets.DOCEKERHUB_TOKEN}}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
+      # Login to Docker hub med dockers script
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-            - name: Build and push Docker image
-                uses: docker/build-push-action@v5
-                with:
-                    context: .
-                    push: true
-                    tags: hjhswe/dso25-docker: latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: hjhswe/dso25-docker:latest
 
 # docker har ett eget script för build and push till docker, 20-21

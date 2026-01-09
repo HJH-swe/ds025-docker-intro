@@ -1,6 +1,5 @@
 # ska automatisera byggandet av image
-# och pusha upp filen till Dockerhub
-# med Github actions
+# och pusha upp filen till Dockerhub med Github actions
 
 name: Publish Docker image
 
